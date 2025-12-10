@@ -22,7 +22,6 @@ const seperateCells = (csv) =>{
                 [header[3]] : cells[3]
             }
         }
-    
         cells =  ["", "", "", ""]
         cellIndex = 0
     }
@@ -126,5 +125,14 @@ console.log(arrCopy)
 // part 5
 
 const changeToCsv = (rows) => {
-    
+
+    const header = Object.keys(rows[0])
+
+    const headersLine = header.join(',')
+
+    const data = rows.map((row) => header.map(key => row[key]).join(','))
+
+    return [headersLine, ...data].join('\n')
 }
+
+console.log(changeToCsv(arrCopy))
